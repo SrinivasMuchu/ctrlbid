@@ -3,7 +3,7 @@ import React from 'react';
 function StepOne({ formData, onChange, onNext }) {
   return (
     <div>
-      <h2 style={{ marginBottom: 24 }}>Step 1: Unique Info</h2>
+      <h2 style={{ marginBottom: 24 }}>Step 1: Grant Info</h2>
       <div className="form-row">
         <div className="form-col">
           <label className="form-label">

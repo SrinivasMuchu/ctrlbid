@@ -1,10 +1,10 @@
 import React from 'react';
 
 const steps = [
-  'Basic Info',
-  'Description',
-  'Terms & Conditions',
-  'Upload',
+  'Grant Info',
+  'Agreement',
+  'Salary & Wages',
+  'Upload document',
   'Review & Submit'
 ];
 
