@@ -36,3 +36,170 @@
     transform: rotate(360deg);
   }
 }
+
+.form-container {
+  max-width: 950px;
+  margin: 40px auto;
+  padding: 32px 40px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.status-bar span {
+  padding: 6px 12px;
+  border-radius: 4px;
+  background: #eee;
+  margin-right: 4px;
+}
+
+.status-bar .completed {
+  background: #4caf50;
+  color: #fff;
+}
+
+.status-bar .active {
+  background: #2196f3;
+  color: #fff;
+}
+
+.form-navigation {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Add to App.css or src/styles/form.css */
+.vertical-status-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  min-width: 160px;
+}
+.status-step {
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-height: 48px;
+}
+.step-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #eee;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  z-index: 1;
+}
+.step-circle.active {
+  background: #2196f3;
+  color: #fff;
+  border-color: #2196f3;
+}
+.step-circle.completed {
+  background: #4caf50;
+  color: #fff;
+  border-color: #4caf50;
+}
+.step-label {
+  margin-left: 12px;
+  font-size: 15px;
+  color: #333;
+}
+.step-line {
+  position: absolute;
+  left: 13px;
+  top: 32px;
+  width: 2px;
+  height: 32px;
+  background: #ccc;
+  z-index: 0;
+  overflow: hidden;
+}
+.step-line-progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: #4caf50;
+  z-index: 1;
+  height: 0%;
+  transition: height 0.6s cubic-bezier(.4,0,.2,1);
+}
+.form-btn {
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  padding: 8px 24px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.form-btn:hover {
+  background: #1769aa;
+}
+
+.salary-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 18px;
+}
+.salary-table th, .salary-table td {
+  border: 1px solid #bbb;
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 15px;
+}
+.salary-table th {
+  background: #f5f5f5;
+  font-weight: 600;
+}
+.salary-table input {
+  width: 90%;
+  padding: 4px 6px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.form-row {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 18px;
+}
+.form-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.form-label {
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  font-size: 15px;
+}
