@@ -38,8 +38,8 @@ function StepFour({ onFileUpload, supabase, onPrev, onNext }) {
 
   return (
     <div>
-      <h2>Step 4: Review</h2>
-      <p>You have gone through all steps. Click submit to finish.</p>
+      <h2>Step 4: Upload Your Documents for Verification</h2>
+      <p>Upload your documents securely and quickly.</p>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
         <button
           type="button"
