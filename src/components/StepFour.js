@@ -13,26 +13,15 @@ function StepFour({ onFileUpload, supabase, onPrev, onNext }) {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       setUploadMsg('Uploading...');
-      // Upload to Supabase Storage
-      const filePath = `documents/${Date.now()}_${file.name}`;
-      const { data, error } = await supabase.storage
-        .from('assets')
-        .upload(filePath, file);
-
-      if (error) {
+      
+      try {
+        // Use the onFileUpload prop (which handles the actual upload)
+        await onFileUpload(file);
+        setUploadedFile(file.name);
+        setUploadMsg('File uploaded successfully!');
+      } catch (error) {
         setUploadMsg('File upload failed: ' + error.message);
-        return;
       }
-
-      // Get public URL
-      const { data: publicUrlData } = supabase
-        .storage
-        .from('assets')
-        .getPublicUrl(filePath);
-
-      onFileUpload(publicUrlData.publicUrl);
-      setUploadedFile(file.name);
-      setUploadMsg('File uploaded successfully!');
     }
   };
 
@@ -68,7 +57,7 @@ function StepFour({ onFileUpload, supabase, onPrev, onNext }) {
       </div>
       {uploadedFile && (
         <div style={{ marginTop: 12, color: 'green', fontWeight: 500 }}>
-          {uploadMsg} {uploadedFile && <span>({uploadedFile})</span>}
+          {uploadMsg} <span>({uploadedFile})</span>
         </div>
       )}
       {!uploadedFile && uploadMsg && (
@@ -77,7 +66,7 @@ function StepFour({ onFileUpload, supabase, onPrev, onNext }) {
         </div>
       )}
       <div style={{ marginTop: 24 }}>
-        <button onClick={onPrev} style={{ marginRight: 16,background:'green' }} className="form-btn">Prev</button>
+        <button onClick={onPrev} style={{ marginRight: 16, background:'green' }} className="form-btn">Prev</button>
         <button onClick={onNext} className="form-btn">Next</button>
       </div>
     </div>
