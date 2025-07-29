@@ -15,7 +15,7 @@ function StepFour({ onFileUpload, supabase, onPrev, onNext }) {
       setUploadMsg('Uploading...');
       
       try {
-        // Use the onFileUpload prop (which handles the actual upload)
+        // Make sure we're passing the file object
         await onFileUpload(file);
         setUploadedFile(file.name);
         setUploadMsg('File uploaded successfully!');

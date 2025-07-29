@@ -30,15 +30,21 @@ function App() {
   };
 
   const handleFileUpload = async (file) => {
-    if (!file) return;
+    if (!file) {
+      console.error('No file provided');
+      return;
+    }
+    
+    // Create file path with proper file name
     const filePath = `documents/${Date.now()}_${file.name}`;
+    
     const { data, error } = await supabase.storage
       .from('assets')
       .upload(filePath, file);
 
     if (error) {
-      alert('File upload failed: ' + error.message);
-      return;
+      console.error('Upload error:', error);
+      throw new Error('File upload failed: ' + error.message);
     }
 
     const { data: publicUrlData } = supabase
@@ -47,6 +53,7 @@ function App() {
       .getPublicUrl(filePath);
 
     handleChange('document', publicUrlData.publicUrl);
+    return publicUrlData.publicUrl;
   };
 
   const handleSubmit = async () => {
@@ -63,10 +70,27 @@ function App() {
         agreeCertifications: formData.agreeCertifications,
         salaryWages: formData.salaryWages,
       }]);
+      
     if (error) {
       alert('Error submitting form: ' + (error.message || JSON.stringify(error)));
     } else {
-      alert('Form submitted!');
+      alert('Form submitted successfully!');
+      
+      // Reset form data to initial state
+      setFormData({
+        projectTitle: '',
+        category: '',
+        startDate: '',
+        isActive: false,
+        budget: '',
+        description: '',
+        document: null,
+        agreeCertifications: false,
+        salaryWages: [],
+      });
+      
+      // Go back to step 1
+      setStep(1);
     }
   };
 
