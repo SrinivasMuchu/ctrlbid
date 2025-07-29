@@ -74,9 +74,6 @@ function App() {
     if (error) {
       alert('Error submitting form: ' + (error.message || JSON.stringify(error)));
     } else {
-      alert('Form submitted successfully!');
-      
-      // Reset form data to initial state
       setFormData({
         projectTitle: '',
         category: '',
@@ -91,6 +88,10 @@ function App() {
       
       // Go back to step 1
       setStep(1);
+      alert('Form submitted successfully!');
+      
+      // Reset form data to initial state
+      
     }
   };
 
